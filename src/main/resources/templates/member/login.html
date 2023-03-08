@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>login</title>
+<script>
+	const message = '[[${message}]]';
+	message && alert(message);
+</script>
+</head>
+<body>
+	<!-- 
+		"/member/login" 요청을 로그인 요청으로 설정해 두었기 때문에 스프링 시큐리티 필터에서는 이 요청을
+		가로채게 된다. userDetailService의 용도로 AuthenticationService를 사용하겠다고 설정했으므로
+		loadUserByUsername 메소드가 호출된다. 스프링 시큐리티 필터 내에서 id, password를 다루는 이름이
+		"username", "password"로 설정되어있으므로 해당값을 넘길 때 name 속성이 다른 명칭으로 설정 되지 않도롣 유의한다. 
+		다룰 때 "username", "password"이 기본값이므로 커스텀하지 않으면 그대로 사용하여야한다. 
+	 -->
+	<h1 align="center">로그인 페이지</h1>
+	<div align="center">
+		<form action="/member/login" method="post">
+			<div>
+				<span>아이디 &nbsp&nbsp: </span>
+				<input type="text" name="username">
+			</div>
+			<div>
+				<span>비밀번호 : </span>
+				<input type="password" name="password">
+			</div>
+			<div>
+				<button>로그인</button>
+			</div>
+		</form>
+	</div>
+</body>
+</html>

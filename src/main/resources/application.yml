@@ -1,0 +1,23 @@
+# server config
+server:
+  port: 8001
+  
+# database config
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.driver.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521:xe
+    username: C##LOGIN_AUTH
+    password: LOGIN_AUTH
+
+#mybatis config
+mybatis:
+  mapper-locations: mappers/**/*.xml
+  
+# log level
+logging:
+  level: 
+# root level - 전역설정
+    root: info
+# package level - 지역설정
+    '[com.greedy.security.member.service]': trace
