@@ -5,13 +5,13 @@ import java.util.List;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import com.greedy.security.member.model.dao.MemberMapper;
+import com.greedy.security.member.model.dto.CustomUser;
 import com.greedy.security.member.model.dto.MemberDTO;
 import com.greedy.security.member.model.dto.MemberRoleDTO;
 
@@ -69,7 +69,10 @@ public class AuthenticationService implements UserDetailsService {
 			authorities.add(new SimpleGrantedAuthority(role.getAuthority().getName()));
 		}
 		
-		return new User(member.getId(), member.getPwd(), authorities);
+//		return new User(member.getId(), member.getPwd(), authorities);
+		/* User 객체에 담기지 않는 추가 정보를 User를 extends한 CustomUser에 담아서 리턴한다. */
+		return new CustomUser(member, authorities);
+		
 	}
 
 }

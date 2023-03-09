@@ -15,6 +15,12 @@
 	<div align="right">
 		<!-- isAuthenticatied() : 인증(로그인)되어 있는지 확인 -->
 		<th:block sec:authorize="isAuthenticated()">
+			<h3><span sec:authentication="principal"></span>님 환영합니다.</h3><!-- 고객정보 노출 , 클래스 확장이 필요하다.  -->
+			<h3><span sec:authentication="principal.username"></span>님 환영합니다.</h3>
+			<h3><span sec:authentication="principal.name"></span>님 환영합니다.</h3>
+			<h3><span th:text="${ #authentication.principal.no }"></span>님 환영합니다.</h3>
+			<h3><span th:text="${ #dates.format(#authentication.principal.registDate, 'yyyy-MM-dd') }"></span>님 환영합니다.</h3>
+			
 			<button onclick="location.href='/member/mypage'">마이페이지</button>
 			<button onclick="location.href='/member/logout'">로그아웃</button>
 		</th:block>
